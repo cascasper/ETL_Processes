@@ -25,4 +25,19 @@ public class etlProcess
         return nytSalg;
     }
     
+    public LagerVare MapTilLagerVare(string line)
+  {
+    string[] dele = line.Split(',');
+    
+    var vare = new LagerVare
+    {
+      Navn = dele[0].Trim(),
+      Pris = double.Parse(dele[1].Trim(), CultureInfo.InvariantCulture),
+      Antal = int.Parse(dele[2].Trim(), CultureInfo.InvariantCulture),
+      ErAktiv = bool.Parse(dele[3].Trim())
+    };
+
+    return vare;
+
+  }
 };
